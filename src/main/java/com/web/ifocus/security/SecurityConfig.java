@@ -1,4 +1,4 @@
-package com.web.ifocus;
+package com.web.ifocus.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
