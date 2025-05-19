@@ -1,6 +1,8 @@
 package com.web.ifocus.dto.habit;
 
 import java.time.LocalDate;
+
+import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.NotNull;
@@ -19,18 +21,21 @@ public class HabitRequestDto {
     @NotBlank(message = "El nombre del hábito no puede estar vacío")
     private String habitName;
 
+    @NotNull(message = "La fecha de inicio es obligatoria")
+    @FutureOrPresent(message = "La fecha de inicio no puede ser pasada")
     @PastOrPresent(message = "La fecha de inicio no puede ser futura")
     private LocalDate startAt;
 
+    @NotNull(message = "La fecha de fin es obligatoria")
+    @FutureOrPresent(message = "La fecha de fin no puede ser pasada")
     private LocalDate endAt;
 
-    /** El ID del usuario que crea el hábito */
+
     @NotNull(message = "El ID del usuario no puede ser nulo")
     private Long userId;
 
-    /** XOR con personalizedCategoryId */
     private Long defaultCategoryId;
 
-    /** XOR con defaultCategoryId */
+
     private Long personalizedCategoryId;
 }
